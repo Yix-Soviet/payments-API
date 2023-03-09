@@ -6,7 +6,6 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -15,13 +14,40 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Payments',
+            name="Payments",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('service', models.CharField(choices=[('NF', 'Netflix'), ('AP', 'Amazon Video'), ('ST', 'Start+'), ('PM', 'Paramount+')], default='NF', max_length=2)),
-                ('payment_date', models.DateField(auto_now_add=True)),
-                ('amount', models.FloatField(default=0.0)),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='users', to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "service",
+                    models.CharField(
+                        choices=[
+                            ("NF", "Netflix"),
+                            ("AP", "Amazon Video"),
+                            ("ST", "Start+"),
+                            ("PM", "Paramount+"),
+                        ],
+                        default="NF",
+                        max_length=2,
+                    ),
+                ),
+                ("payment_date", models.DateField(auto_now_add=True)),
+                ("amount", models.FloatField(default=0.0)),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="users",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]
